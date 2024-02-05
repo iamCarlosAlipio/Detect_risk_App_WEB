@@ -1,0 +1,104 @@
+<div class="main-body">
+    <form [formGroup]="myForm" style="width: 40%;">
+        <div style="display: flex; justify-content: center;">
+            <h1>Proveedor</h1>
+        </div>
+
+        <div class="row">
+            <mat-form-field>
+              <mat-label>Razón social</mat-label>
+              <input matInput formControlName="RazonSocial" placeholder="Mi empresa S.A.C" [readonly]="condition">
+              <mat-error *ngIf="myForm.get('RazonSocial')?.hasError('required')">Campo obligatorio</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>Nombre comercial</mat-label>
+              <input matInput formControlName="NombreComercial" placeholder="Mi empresa" [readonly]="condition">
+              <mat-error *ngIf="myForm.get('NombreComercial')?.hasError('required')">Campo obligatorio</mat-error>
+            </mat-form-field> 
+          </div>
+          
+          <div class="row">
+            <mat-form-field>
+              <mat-label>Identificación tributaria</mat-label>
+              <input matInput formControlName="IdentificacionTributaria" placeholder="00000000000" [readonly]="condition">
+              <mat-error *ngIf="myForm.get('IdentificacionTributaria')?.hasError('required')">Campo obligatorio</mat-error>
+              <mat-error *ngIf="myForm.get('IdentificacionTributaria')?.hasError('pattern')">Digite 11 números</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>Número telefónico</mat-label>
+              <input matInput formControlName="NumeroTelefonico" placeholder="123-456-7890" [readonly]="condition">
+              <mat-error *ngIf="myForm.get('NumeroTelefonico')?.hasError('required')">Campo obligatorio</mat-error>
+              <mat-error *ngIf="myForm.get('NumeroTelefonico')?.hasError('pattern')">Formato incorrecto (+51 901012012)</mat-error>
+            </mat-form-field>
+          </div>
+          
+          <div class="row">
+            <mat-form-field>
+              <mat-label>Correo electrónico</mat-label>
+              <input matInput formControlName="CorreoElectronico" placeholder="miempresa@gmail.com" [readonly]="condition"> 
+              <mat-error *ngIf="myForm.get('CorreoElectronico')?.hasError('required')">Campo obligatorio</mat-error>
+              <mat-error *ngIf="myForm.get('CorreoElectronico')?.hasError('email')">Formato de correo electrónico incorrecto</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>Sitio web</mat-label>
+              <input matInput formControlName="SitioWeb" [readonly]="condition">
+              <mat-error *ngIf="myForm.get('SitioWeb')?.hasError('required')">Campo obligatorio</mat-error>
+              <mat-error *ngIf="myForm.get('SitioWeb')?.hasError('pattern')">Formato incorrecto (http://www.ejemplo.com)</mat-error>
+            </mat-form-field>
+          </div>
+          
+          <div class="row">
+            <mat-form-field>
+              <mat-label>Fecha de última edición</mat-label>
+              <input matInput formControlName="FechaUltimaEdicion" [matDatepicker]="picker" [readonly]="condition">
+              <mat-datepicker-toggle matIconSuffix [for]="picker" disabled="condition"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="myForm.get('FechaUltimaEdicion')?.hasError('required')">Campo obligatorio</mat-error>
+              <mat-error *ngIf="myForm.get('FechaUltimaEdicion')?.hasError('fechaInvalida')">
+                La fecha debe ser anterior a la fecha actual.
+            </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Hora de ultima Edición</mat-label>
+              <input matInput formControlName="Hora" [readonly]="condition">
+              <mat-error *ngIf="myForm.get('Hora')?.hasError('required')">Campo obligatorio</mat-error>
+              <mat-error *ngIf="myForm.get('Hora')?.hasError('invalidTimeFormat')">Formato de hora inválido (ejemplo: 00:00:00)</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="row">
+            <mat-form-field>
+              <mat-label>Dirección física</mat-label>
+              <input matInput formControlName="DireccionFisica" [readonly]="condition">
+              <mat-error *ngIf="myForm.get('DireccionFisica')?.hasError('required')">Campo obligatorio</mat-error>
+            </mat-form-field>
+          
+            <mat-form-field>
+                <mat-label>Selecciona un país</mat-label>
+                <mat-select formControlName="Pais" >
+                  <mat-option *ngFor="let country of countries" [value]="country" [disabled]="condition">
+                    {{ country }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="myForm.get('Pais')?.hasError('required')">Campo obligatorio</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Facturación anual en dólares</mat-label>
+                <input matInput formControlName="FacturacionAnual" placeholder="$00.0" [readonly]="condition">
+                <mat-error *ngIf="myForm.get('FacturacionAnual')?.hasError('required')">Campo obligatorio</mat-error>
+                <mat-error *ngIf="myForm.get('FacturacionAnual')?.hasError('pattern')">Formato incorrecto</mat-error>
+              </mat-form-field>
+          </div>
+        
+        <div style="display: flex; justify-content: center;">
+            <button mat-raised-button class="custom-button" routerLink="">Cancelar</button>
+            <button mat-raised-button color="primary" class="custom-button" (click)="AcctionSupplier()">Aceptar</button>
+          </div>
+    </form>
+</div>
+

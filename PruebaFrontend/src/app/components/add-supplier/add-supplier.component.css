@@ -1,0 +1,19 @@
+.custom-button {
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 40%;
+    margin-top: 2%;
+  }
+.main-body{
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+}
+.row{
+    display: flex;
+    gap: 10px;
+
+    mat-form-field{
+        width: 100%;
+    }
+}

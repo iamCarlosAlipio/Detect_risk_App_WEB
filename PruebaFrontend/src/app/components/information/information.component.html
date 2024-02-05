@@ -1,0 +1,40 @@
+<div mat-dialog-title>
+    <h1>Elige un fuente para evaluar el riesgo</h1>
+</div>
+
+<form [formGroup]="myForm">
+    <div mat-dialog-content class="content">
+        <div>
+            <mat-radio-group aria-label="Select an option" (change)="onRadioChange($event)">
+                <mat-radio-button value="1">Offshore Leaks Database</mat-radio-button>
+                <mat-radio-button value="2" disabled="true">The World Bank</mat-radio-button>
+                <mat-radio-button value="3" disabled="true">OFAC</mat-radio-button>
+            </mat-radio-group>
+        </div>
+    </div>
+
+    <div *ngIf="conditional">
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Entity</mat-label>
+                <input matInput formControlName="entity" readonly="true">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Data From</mat-label>
+                <input matInput formControlName="dataFrom" readonly="true">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Jurisdiction</mat-label>
+                <input matInput formControlName="jurisdiction" readonly="true">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Liked To</mat-label>
+                <input matInput formControlName="likedTo" readonly="true">
+            </mat-form-field>
+        </div>
+    </div>
+    
+</form>
+

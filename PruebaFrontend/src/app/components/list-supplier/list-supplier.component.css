@@ -1,0 +1,42 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.main-body {
+  padding-top: 10px;
+  margin: 0 auto;
+  max-width: 1500px;
+  mat-form-field {
+    width: 100%;
+  }
+}
+.tittle{
+  font-weight: bold;
+}
+
+.organize{
+  margin-top: 1.5%;
+}
+
+.action {
+  display: flex;
+}
+
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 5%;
+}
+
+.example-button-container button.mat-mini-fab {
+  width: 24px; 
+  height: 24px;
+  padding-right: 20%;
+}
+
+.example-button-container mat-icon {
+  font-size: 130%;
+  padding-top: 30%;
+} 
